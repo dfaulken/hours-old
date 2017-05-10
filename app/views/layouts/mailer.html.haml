@@ -3,6 +3,17 @@
   %head
     %meta{:content => "text/html; charset=utf-8", "http-equiv" => "Content-Type"}/
     :css
-      /* Email styles need to be inline */
+      font-family: 'Avenir', sans-serif;
+      table{
+        margin: 10px;
+      }
+      th{ background: lightgrey; }
+      th,td{
+        border: 1px solid grey;
+        border-collapse: collapse;
+        margin: 0;
+        padding: 5px;
+      }
+      td.right { text-align: right; }
   %body
     = yield

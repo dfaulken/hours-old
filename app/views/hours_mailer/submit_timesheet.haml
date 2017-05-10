@@ -1,0 +1,31 @@
+Hi Betsy,
+%br
+%br
+Here are my hours for last week.
+%br
+%br
+%table
+  %thead
+    %tr
+      %th Day
+      %th Start
+      %th End
+      %th Length
+  %tbody
+    - @shifts.each.with_index do |shift, i|
+      %tr
+        %td
+          - unless @shifts[i - 1].date == shift.date
+            = shift.date.strftime '%A'
+        %td= shift.time
+        %td= shift.end_time.strftime('%l:%M %P')
+        %td.right= shift.length
+    %tr
+      %th{colspan: 2} Total
+      %th{colspan: 2}= @shifts.sum :length
+
+%br
+Thanks,
+%br
+%br
+David

@@ -35,7 +35,7 @@ class Shift < ApplicationRecord
   end
 
   def self.submit_week(range)
-    shifts = in_range range
+    shifts = in_range(range).order :start
     HoursMailer.with(shifts: shifts).submit_timesheet.deliver_now
   end
 

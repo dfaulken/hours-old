@@ -59,7 +59,7 @@ class ShiftsController < ApplicationController
   end
 
   def shift_params
-    params_in = params.require(:shift).require(:date, :time, :length)
+    params_in = params.require(:shift).permit(:date, :time, :length)
     start = Date.parse(params_in[:date]) + parse_hours(params_in[:time]).hours
     params_in.except(:date, :time).merge(start: start)
   end
