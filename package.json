@@ -1,0 +1,7 @@
+{
+  "name": "hours",
+  "private": true,
+  "dependencies": {
+    "jquery": "3.2"
+  }
+}

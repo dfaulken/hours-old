@@ -1,0 +1,42 @@
+body{
+  font-family: 'Avenir', sans-serif;
+  font-size: large;
+  .shifts{
+    h1,h2{
+      text-align: center;
+    }
+    a.prev-week{
+      float: left;
+    }
+    a.next-week{
+      float: right;
+    }
+    margin: 5px 5em;
+    .day{
+      border: 3px solid lightgrey;
+      border-radius: 6px;
+      .date{
+        background: mintcream;
+        border-bottom: 2px solid lightgrey;
+        margin: 0;
+        padding: 3px;
+        text-align: center;
+      }
+      .day-shifts{
+        padding: 10px;
+        .new-shift{
+          display: none;
+          background: lightyellow;
+          padding: 5px;
+        }
+        button.add-shift{
+          background: lightgreen;
+          border-radius: 6px;
+          font-weight: bold;
+          margin-top: 5px;
+          padding: 8px;
+        }
+      }
+    }
+  }
+}

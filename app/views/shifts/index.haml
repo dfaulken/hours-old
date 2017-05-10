@@ -1,0 +1,42 @@
+.shifts
+  %h1
+    = @start_date.strftime '%A, %B %e, %Y'
+    &mdash;
+    = @end_date.strftime '%A, %B %e, %Y'
+  - unless @start_date - 1.week < Shift::BEGINNING_OF_TIME
+    = link_to shifts_url(start_date: @start_date - 1.week), class: 'prev-week' do
+      %button
+        &larr;
+        Previous week
+  - unless @end_date + 1.week > Shift::END_OF_TIME
+    = link_to shifts_url(start_date: @start_date + 1.week), class: 'next-week' do
+      %button
+        Next week
+        &rarr;
+  %h2 Total hours: #{@total_hours}
+  - @dates.each.with_index do |date, index|
+    - shifts = @shifts.on date
+    .day
+      %h3.date
+        = date.strftime('%A, %B %e')
+        - if shifts.any?
+          (#{shifts.sum(&:length)} hours)
+      .day-shifts
+        - shifts.each do |shift|
+          = form_with model: shift, local: true do |form|
+            = form.label :time
+            = form.text_field :time
+            = form.label :length
+            = form.text_field :length
+            = form.hidden_field :date, value: date
+            = form.submit
+            = button_to 'Destroy', shift_path(shift), method: :delete
+        %button.add-shift{ data: { index: index } } +
+        .new-shift{data: { index: index }}
+          = form_with model: Shift.new_on(date), local: true do |form|
+            = form.hidden_field :date, value: date
+            = form.label :time
+            = form.text_field :time, placeholder: '9:00 am'
+            = form.label :length
+            = form.text_field :length, placeholder: '8.0'
+            = form.submit
