@@ -19,6 +19,12 @@ class ShiftsController < ApplicationController
     @total_hours = @shifts.sum :length
   end
 
+  def initialize_week
+    start_date = Date.parse(params.require(:start_date))
+    Shift.initialize_week start_date
+    redirect_to shifts_url(start_date: start_date)
+  end
+
   def update
     @shift.update! shift_params
     redirect_to shifts_url(start_date: @shift.date)
@@ -46,7 +52,7 @@ class ShiftsController < ApplicationController
   end
 
   def shift_params
-    params_in = params.require(:shift).permit(:date, :time, :length)
+    params_in = params.require(:shift).require(:date, :time, :length)
     start = Date.parse(params_in[:date]) + parse_hours(params_in[:time]).hours
     params_in.except(:date, :time).merge(start: start)
   end

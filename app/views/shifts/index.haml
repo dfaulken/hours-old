@@ -14,6 +14,9 @@
         Next week
         &rarr;
   %h2 Total hours: #{@total_hours}
+  - if @shifts.none?
+    = button_to "I'm working 9 to 5",
+      initialize_week_shifts_url(start_date: @start_date)
   - @dates.each.with_index do |date, index|
     - shifts = @shifts.on date
     .day
@@ -33,7 +36,7 @@
             = button_to 'Destroy', shift_path(shift), method: :delete
         %button.add-shift{ data: { index: index } } +
         .new-shift{data: { index: index }}
-          = form_with model: Shift.new_on(date), local: true do |form|
+          = form_with model: Shift.new, local: true do |form|
             = form.hidden_field :date, value: date
             = form.label :time
             = form.text_field :time, placeholder: '9:00 am'

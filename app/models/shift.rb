@@ -14,20 +14,24 @@ class Shift < ApplicationRecord
     start + length.hours
   end
 
+  # Normally we wouldn't nil-handle something whose presence we validate,
+  # but this accommodates stock new objects.
   def time
-    start.to_time.strftime('%l:%M %P')
+    start.try(:to_time).try(:strftime, '%l:%M %P')
   end
 
   def self.in_range(range)
     where start: range
   end
 
-  def self.on(date)
-    where start: date.beginning_of_day..date.end_of_day
+  def self.initialize_week(start_date)
+    start_date.upto(start_date + 6.days).each do |date|
+      create! start: date + 9.hours, length: 8.0 if date.on_weekday?
+    end
   end
 
-  def self.new_on(date)
-    new start: date + 9.hours, length: 8.0
+  def self.on(date)
+    where start: date.beginning_of_day..date.end_of_day
   end
 
   private
