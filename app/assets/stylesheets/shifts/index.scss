@@ -15,8 +15,10 @@ body{
     .day{
       border: 3px solid lightgrey;
       border-radius: 6px;
+      margin-bottom: 5px;
       .date{
         background: mintcream;
+        &[index="0"],&[index="6"]{ background: oldlace; }
         border-bottom: 2px solid lightgrey;
         margin: 0;
         padding: 3px;
