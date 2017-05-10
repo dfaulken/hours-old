@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :shifts, only: %i[create destroy index update] do
     collection do
       post :initialize_week
+      post :submit_week
     end
   end
 end

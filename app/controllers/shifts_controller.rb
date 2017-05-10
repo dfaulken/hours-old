@@ -25,6 +25,13 @@ class ShiftsController < ApplicationController
     redirect_to shifts_url(start_date: start_date)
   end
 
+  def submit_week
+    start_date = Date.parse(params.require(:start_date))
+    end_date = start_date + 6.days
+    Shift.submit_week start_date.beginning_of_day..end_date.beginning_of_day
+    redirect_to shifts_url(start_date: start_date)
+  end
+
   def update
     @shift.update! shift_params
     redirect_to shifts_url(start_date: @shift.date)

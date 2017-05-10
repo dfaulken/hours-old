@@ -15,6 +15,9 @@
   - if @shifts.none?
     = button_to "I'm working 9 to 5",
       initialize_week_shifts_url(start_date: @start_date)
+  - else
+    = button_to 'Submit shifts',
+      submit_week_shifts_url(start_date: @start_date)
   - @dates.each.with_index do |date, index|
     - shifts = @shifts.on date
     .day

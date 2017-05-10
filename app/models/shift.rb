@@ -34,6 +34,11 @@ class Shift < ApplicationRecord
     where start: date.beginning_of_day..date.end_of_day
   end
 
+  def self.submit_week(range)
+    shifts = in_range range
+    HoursMailer.with(shifts: shifts).submit_timesheet.deliver_now
+  end
+
   private
 
   def quarter_hour_length
