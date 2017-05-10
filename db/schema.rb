@@ -10,11 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170510165110) do
+ActiveRecord::Schema.define(version: 20170510234625) do
 
   create_table "shifts", force: :cascade do |t|
     t.datetime "start"
     t.float "length"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "submissions", force: :cascade do |t|
+    t.date "start"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

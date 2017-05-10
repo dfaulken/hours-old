@@ -16,6 +16,7 @@ class ShiftsController < ApplicationController
     @shifts = Shift.in_range(@start_date.beginning_of_day..@end_date.end_of_day)
                    .order(:start)
     @dates = @start_date.upto @end_date
+    @submissions = Submission.for @start_date
     @total_hours = @shifts.sum :length
   end
 
@@ -27,8 +28,7 @@ class ShiftsController < ApplicationController
 
   def submit_week
     start_date = Date.parse(params.require(:start_date))
-    end_date = start_date + 6.days
-    Shift.submit_week start_date.beginning_of_day..end_date.beginning_of_day
+    Shift.submit_week start_date
     redirect_to shifts_url(start_date: start_date)
   end
 

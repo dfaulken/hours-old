@@ -34,9 +34,12 @@ class Shift < ApplicationRecord
     where start: date.beginning_of_day..date.end_of_day
   end
 
-  def self.submit_week(range)
-    shifts = in_range(range).order :start
+  def self.submit_week(start_date)
+    end_date = start_date + 6.days
+    shifts = in_range(start_date.beginning_of_day..end_date.end_of_day)
+             .order :start
     HoursMailer.with(shifts: shifts).submit_timesheet.deliver_now
+    Submission.create! start: start_date
   end
 
   private

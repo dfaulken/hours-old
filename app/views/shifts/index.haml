@@ -16,8 +16,19 @@
     = button_to "I'm working 9 to 5",
       initialize_week_shifts_url(start_date: @start_date)
   - else
-    = button_to 'Submit shifts',
-      submit_week_shifts_url(start_date: @start_date)
+    - if @submissions.empty?
+      = button_to 'Submit shifts',
+        submit_week_shifts_url(start_date: @start_date)
+    - else
+      - @submissions.each.with_index do |submission, index|
+        - if index.zero?
+          Shifts submitted
+        - else
+          Resubmitted
+        = submission.created_at.strftime '%B %e, %Y at %l:%M %p'
+        %br
+      = button_to 'Resubmit shifts',
+        submit_week_shifts_url(start_date: @start_date)
   - @dates.each.with_index do |date, index|
     - shifts = @shifts.on date
     .day
