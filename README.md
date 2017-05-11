@@ -1,24 +1,16 @@
-# README
+# hours
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a Rails 5.1 app I deploy on a DigitalOcean droplet for tracking my hours worked for PVTA.
 
-Things you may want to cover:
+It emails our payroll clerk, and my boss, the hours each week in a standard format.
 
-* Ruby version
+It's secured with basic HTTP authentication.
 
-* System dependencies
+This was also a way for me to become familiar with some of the cool new features of Rails 5.1:
 
-* Configuration
++ encrypted secrets
++ Yarn
++ parameterized mailers
++ `form_with`
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+They're pretty awesome.
