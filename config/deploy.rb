@@ -1,5 +1,5 @@
 # Change these
-server '45.55.88.65', port: 22, roles: [:web, :app, :db], primary: true
+server '45.55.88.65', roles: [:web, :app, :db], primary: true
 
 set :repo_url,        'git@github.com:dfaulken/hours.git'
 set :application,     'hours'
@@ -31,7 +31,7 @@ set :puma_init_active_record, true  # Change to false when not using ActiveRecor
 # set :keep_releases, 5
 
 ## Linked Files & Directories (Default None):
-# set :linked_files, %w{config/database.yml}
+set :linked_files, %w{config/database.yml config/secrets.yml.key}
 # set :linked_dirs,  %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
 
 namespace :puma do
