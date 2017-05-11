@@ -24,3 +24,5 @@ production:
   <<: *default
   adapter: postgresql
   database: hours_production
+  user: deploy
+  password: <%= Rails.application.secrets.fetch(:database_password) %>
