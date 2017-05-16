@@ -26,6 +26,9 @@ body{
       }
       .day-shifts{
         padding: 10px;
+        .shift{
+          display: flex;
+        }
         .new-shift{
           display: none;
           background: lightyellow;

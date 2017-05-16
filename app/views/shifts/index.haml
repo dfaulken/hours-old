@@ -38,13 +38,14 @@
           (#{shifts.sum(&:length)} hours)
       .day-shifts
         - shifts.each do |shift|
-          = form_with model: shift, local: true do |form|
-            = form.label :time
-            = form.text_field :time
-            = form.label :length
-            = form.text_field :length
-            = form.hidden_field :date, value: date
-            = form.submit 'Update'
+          .shift
+            = form_with model: shift, local: true do |form|
+              = form.label :time
+              = form.text_field :time
+              = form.label :length
+              = form.text_field :length
+              = form.hidden_field :date, value: date
+              = form.submit 'Update'
             = button_to 'Destroy', shift_path(shift), method: :delete
         %button.add-shift{ data: { index: index } } +
         .new-shift{data: { index: index }}
