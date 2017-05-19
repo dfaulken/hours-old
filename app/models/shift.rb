@@ -38,7 +38,7 @@ class Shift < ApplicationRecord
     end_date = start_date + 6.days
     shifts = in_range(start_date.beginning_of_day..end_date.end_of_day)
              .order :start
-    HoursMailer.with(shifts: shifts).submit_timesheet.deliver_now
+    HoursMailer.with(shifts: shifts, start_date: start_date, end_date: end_date).submit_timesheet.deliver_now
     Submission.create! start: start_date
   end
 
