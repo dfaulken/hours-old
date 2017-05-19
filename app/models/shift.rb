@@ -17,7 +17,7 @@ class Shift < ApplicationRecord
   # Normally we wouldn't nil-handle something whose presence we validate,
   # but this accommodates stock new objects.
   def time
-    start.try(:to_time).try(:strftime, '%l:%M %P')
+    start.try(:to_time).try(:strftime, '%-l:%M %P')
   end
 
   def self.in_range(range)
