@@ -1,3 +1,5 @@
+ApplicationMailer.delivery_method = :sendmail
+
 class HoursMailer < ApplicationMailer
   default from: 'mailer-noreply@hours.davidfaulkenberry.com'
   default to: ['adam@umass.edu', 'betsyt@admin.umass.edu']
