@@ -8,11 +8,10 @@ class HoursMailer < ApplicationMailer
 
   before_action do
     @shifts = params[:shifts]
-    @start_date = params[:start_date]
-    @end_date = params[:end_date]
   end 
 
   def submit_timesheet
-    mail subject: "Timesheet #{@start_date} to #{@end_date}"
+    mail subject: "Timesheet #{params[:start_date]} to #{params[:end_date]}",
+      to: 'david.faulkenberry@gmail.com'
   end
 end
