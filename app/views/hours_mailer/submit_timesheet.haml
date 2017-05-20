@@ -4,25 +4,25 @@ Hi Betsy,
 Here are my hours for last week.
 %br
 %br
-%table
+%table{style: 'margin: 10px;'}
   %thead
     %tr
-      %th Day
-      %th Start
-      %th End
-      %th Length
+      %th{style: @th_styling} Day
+      %th{style: @th_styling} Start
+      %th{style: @th_styling} End
+      %th{style: @th_styling} Length
   %tbody
     - @shifts.each.with_index do |shift, i|
       %tr
-        %td
+        %td{style: @td_styling}
           - unless @shifts[i - 1].date == shift.date
             = shift.date.strftime '%A'
-        %td= shift.time
-        %td= shift.end_time.strftime('%l:%M %P')
-        %td.right= shift.length
+        %td{style: @td_styling}= shift.time
+        %td{style: @td_styling}= shift.end_time.strftime('%l:%M %P')
+        %td{style: @td_styling}= shift.length
     %tr
-      %th{colspan: 2} Total
-      %th{colspan: 2}= @shifts.sum :length
+      %th{colspan: 2, style: @th_styling} Total
+      %th{colspan: 2, style: @th_styling}= @shifts.sum :length
 
 %br
 Thanks,

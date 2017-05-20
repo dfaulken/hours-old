@@ -8,6 +8,13 @@ class HoursMailer < ApplicationMailer
 
   before_action do
     @shifts = params[:shifts]
+    @td_styling = [
+      'border: 1px solid grey;',
+      'border-collapse: collapse;',
+      'margin: 0;',
+      'padding: 5px;'
+    ].join ' '
+    @th_styling = @td_styling + ' background: lightgrey;'
   end 
 
   def submit_timesheet
