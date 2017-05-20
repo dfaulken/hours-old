@@ -18,7 +18,6 @@ class HoursMailer < ApplicationMailer
   end 
 
   def submit_timesheet
-    mail subject: "Timesheet #{params[:start_date]} to #{params[:end_date]}",
-      to: 'david.faulkenberry@gmail.com'
+    mail subject: "Timesheet #{params[:start_date]} to #{params[:end_date]}"
   end
 end
