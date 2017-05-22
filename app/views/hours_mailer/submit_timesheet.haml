@@ -16,7 +16,7 @@ Here are my hours for last week.
       %tr
         %td{style: @td_styling}
           - unless @shifts[i - 1].date == shift.date
-            = shift.date.strftime '%A'
+            = shift.date.strftime '%A %-m/%-d'
         %td{style: @td_styling}= shift.time
         %td{style: @td_styling}= shift.end_time.strftime('%l:%M %P')
         %td{style: @td_styling}= shift.length
