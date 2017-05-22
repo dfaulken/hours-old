@@ -4,7 +4,7 @@ class HoursMailer < ApplicationMailer
   default from: 'David Faulkenberry <mailer-noreply@hours.davidfaulkenberry.com>'
   default to: ['adam@umass.edu', 'betsyt@admin.umass.edu']
   # Just because I'm paranoid about how good I am at code
-  default cc: ['david.faulkenberry@gmail.com']
+  default cc: ['david.faulkenberry@gmail.com', 'kmori@admin.umass.edu']
 
   before_action do
     @shifts = params[:shifts]
