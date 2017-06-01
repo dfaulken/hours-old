@@ -1,6 +1,8 @@
 # hours
 
-This is a Rails 5.1 app I deploy on a DigitalOcean droplet for tracking my hours worked for PVTA.
+This is a Rails 5.1 app ~~I deploy on a DigitalOcean droplet~~ for tracking my hours worked for PVTA.
+
+*Edit: I ended up taking it down due to an incompatibility with how I was sending email and UMass's email servers.*
 
 It emails our payroll clerk, and my boss, the hours each week in a standard format.
 
